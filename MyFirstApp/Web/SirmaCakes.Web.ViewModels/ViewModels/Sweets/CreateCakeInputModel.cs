@@ -5,11 +5,10 @@
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
-   public class CreateCakeInputModel
+    public class CreateCakeInputModel
     {
-
         [Required]
-        [StringLength(6)]
+        [MinLength(3)]
         [Display(Name = "Cake Name")]
         public string CakeName { get; set; }
 
@@ -22,8 +21,7 @@
         public string LongDescription { get; set; }
 
         [Required]
-        [StringLength(255)]
-        [Display(Name = "Price")]
+        [Display(Name = "Price in EUR")]
         public decimal Price { get; set; }
 
         [Required]

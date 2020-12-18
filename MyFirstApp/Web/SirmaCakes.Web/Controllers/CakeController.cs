@@ -13,10 +13,14 @@
     {
         // Get samata forma
         private readonly ICategoriesService categoriesService;
+        private readonly ICakesService cakesService;
 
-        public CakeController(ICategoriesService categoriesService)
+        public CakeController(
+            ICategoriesService categoriesService,
+            ICakesService cakesService)
         {
             this.categoriesService = categoriesService;
+            this.cakesService = cakesService;
         }
 
         public IActionResult Create()
@@ -28,17 +32,21 @@
         }
 
         [HttpPost]
-        public IActionResult Create(CreateCakeInputModel input)
+        public async Task <IActionResult> Create(CreateCakeInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
                 // nezabravqme da podadem na view-to
+                // Vkarvame v input modela categoriite koito s v seeder-a
                 input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
                 return this.View(input);
             }
 
-            // Create cake using service method
-            // Todo: redirect to cake info page
+            // Create cake with ICakesService- method Create pravim celiq HHTp taska i awaitvame
+            // podavame mu direktno input modela
+            await this.cakesService.CreateAsync(input);
+
+            // TODO: Redirect to cake Home Page
             return this.Redirect("/");
         }
     }
