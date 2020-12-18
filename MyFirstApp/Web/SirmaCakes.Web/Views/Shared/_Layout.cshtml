@@ -1,0 +1,108 @@
+﻿
+@using SirmaCakes.Common
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@this.ViewData["Title"] - @GlobalConstants.SystemName</title>
+    <!--first is boostrat, theme, my-->
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/css/startbootstrap-clean-blog-gh-pages/css/clean-blog.css" rel="stylesheet" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light border-bottom box-shadow mb-3">
+            <!--Clock-->
+            <html>
+            <head>
+                <script>
+                    function startTime() {
+                        var today = new Date();
+                        var h = today.getHours();
+                        var m = today.getMinutes();
+                        var s = today.getSeconds();
+                        m = checkTime(m);
+                        s = checkTime(s);
+                        document.getElementById('txt').innerHTML =
+                            h + ":" + m + ":" + s;
+                        var t = setTimeout(startTime, 500);
+                    }
+                    function checkTime(i) {
+                        if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+                        return i;
+                    }
+                </script>
+            </head>
+            <body onload="startTime()">
+                <div id="txt"></div>
+            </body>
+        </html>
+
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>                       
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cake" asp-action="Create">Create Sweets</a>
+                        </li>
+                        @RenderSection("Color", false)
+                    </ul>
+                </div>
+            </div>
+        </nav>
+</header>
+
+
+<div class="container">
+    <partial name="_CookieConsentPartial" />
+    <main role="main" class="pb-3">
+        @this.RenderBody()
+    </main>
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; @DateTime.Now.Year - @GlobalConstants.SystemName - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js" asp-append-version="true"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.min.js" asp-append-version="true"></script>
+
+<script src="~/css/startbootstrap-clean-blog-gh-pages/js/clean-blog.js"></script>
+<script src="~/css/startbootstrap-clean-blog-gh-pages/js/contact_me.js"></script>
+<script src="~/css/startbootstrap-clean-blog-gh-pages/js/jqBootstrapValidation.js"></script>
+
+
+
+@await this.RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+<!--Weather Forecast-->
+<div class="g-mb-20">
+    <div class="bottom-buffer-md g-brd-primary g-mb-10">
+        <h3 class="h4 g-color-black mb-0">Weather Forecast</h3>
+    </div>
+    <article class="media g-mb-10">
+        <iframe src="https://www.foreca.com/102745912/Utrecht-Netherlands" width="300" height="300" marginwidth="0"
+                marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" title="Weather Forecast"></iframe>
+    </article>
+</div>
+
+

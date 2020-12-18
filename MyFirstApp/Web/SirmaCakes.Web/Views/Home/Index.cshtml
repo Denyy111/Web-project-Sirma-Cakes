@@ -1,0 +1,82 @@
+﻿@using SirmaCakes.Common
+
+
+@model SirmaCakes.Web.ViewModels.Home.IndexViewModel
+@{
+    this.ViewData["Title"] = "Sirma's Sweets";
+}
+
+<div class="text-center">
+    <div class="jumbotron col-md-12">
+        <div class="heading-container bottom-buffer-md">
+            <h1 class="display-4"> @GlobalConstants.SystemName!</h1>
+            <div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <h1 class=display-4> Welcome, @User.Identity.Name</h1>
+                }
+                <p class="lead" style="font-size: 24px; font-style: italic; ">
+                    Welcome to the world of Sirma's sweet temptations!
+                    The place where your most delicious fantasy will become the feast of the senses.
+                    "In my quest to be different and unique, I put passion and emotion into the fulfillment of every desire."
+                    If you want to touch the magic, write your wishes for the perfect cake and believe in miracles!
+                </p>
+
+                <div class="col-md-4 offset-md-4" style="font-size: 24px; font-style: italic; ">
+                    <p>We have: </p>
+                    <ul class="list-group"> 
+                        @*<li> means: list of items*@
+                        <li class="list-group-item bg-light">Categories: @Model.CategoriesCount</li>
+                        <li class="list-group-item bg-warning">Images: @Model.ImagesCount</li>
+                        <li class="list-group-item bg-light">Cakes: @Model.CakesCount</li>
+                        <li class="list-group-item bg-warning">Users: @Model.UsersCount</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Blank line*@
+<div style="height: 10px"></div>
+
+<div class="row">
+    <img src="~/Images/9306.png"
+         style="width:40%">
+</div>
+
+@*Blank line*@
+<div style="height: 20px"></div>
+
+@section Color {
+    <style>
+        body {
+            background-color: seashell
+        }
+    </style>
+}
+
+@*map*@
+<div class="fa-align-center">
+    <div id="mapdiv" style="width: 500px; height: 300px;"></div>
+    <script src="https://openlayers.org/api/OpenLayers.js"></script>
+    <script>
+        map = new OpenLayers.Map("mapdiv");
+        map.addLayer(new OpenLayers.Layer.OSM());
+
+        var lonLat = new OpenLayers.LonLat(5.0929122, 52.0778979)
+            .transform(
+                new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
+                map.getProjectionObject() // to Spherical Mercator Projection
+            );
+
+        var zoom = 15;
+
+        var markers = new OpenLayers.Layer.Markers("Markers");
+        map.addLayer(markers);
+
+        markers.addMarker(new OpenLayers.Marker(lonLat));
+
+        map.setCenter(lonLat, zoom);
+    </script>
+</div>
