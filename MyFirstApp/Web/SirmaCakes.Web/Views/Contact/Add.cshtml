@@ -1,0 +1,32 @@
+﻿@using SirmaCakes.Web.ViewModels.ViewModels.ContactForm
+@model AddContactFormInputModel
+@{
+    this.ViewData["Title"] = "Contact Us";
+}
+
+<p class="lead" style="font-size: 24px; font-style: italic; ">
+If you have any question or if you've suggestion, don't hegisate to contact with us. We'll happy to help you. Thank you!
+</p>
+
+<form method="post" class="col-md-6 offset-md-3">
+    <h1>@this.ViewData["Title"]</h1>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <email address="example@example.com" content="Send Email"></email>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Questions"></label>
+        <textarea rows="5" asp-for="Questions" class="form-control" row="6"></textarea>
+        <span asp-validation-for="Questions" class="text-danger"></span>
+    </div>
+
+    <input type="submit" value="Submit" class="alert-info" />
+</form>

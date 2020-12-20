@@ -21,14 +21,16 @@
         public string LongDescription { get; set; }
 
         [Required]
-        [Display(Name = "Price in EUR")]
+        [Range(1, 300, ErrorMessage = "Price must be between €1 and €300")]
+        [Display(Name = "Price in €")]
         public decimal Price { get; set; }
 
         [Required]
-        [Range(20, 3000)]
+        [Range(20, 3000, ErrorMessage = "Calories must be between 20 and 3000")]
         [Display(Name = "Calories")]
         public int Calories { get; set; }
 
+        [Required]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
 
