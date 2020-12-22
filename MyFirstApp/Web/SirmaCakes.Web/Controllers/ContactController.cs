@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SirmaCakes.Services.Data;
     using SirmaCakes.Web.ViewModels.ViewModels.ContactForm;

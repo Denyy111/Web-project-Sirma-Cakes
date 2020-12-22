@@ -39,10 +39,6 @@
 
         [StringLength(255)]
         [Required]
-        public string State { get; set; }
-
-        [StringLength(255)]
-        [Required]
         public string Country { get; set; }
 
         [StringLength(6)]

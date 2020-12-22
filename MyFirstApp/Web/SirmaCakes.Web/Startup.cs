@@ -75,6 +75,7 @@
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<ICakesService, CakesService>();
             services.AddTransient<IContactService, ContactService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

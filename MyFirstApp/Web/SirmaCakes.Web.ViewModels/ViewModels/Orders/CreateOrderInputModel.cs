@@ -58,10 +58,12 @@
         [Required(ErrorMessage = "Email Address is required")]
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
 
         public decimal OrderTotal { get; set; }
 
-        // time for delivery
+        // Time for delivery
+        [DataType(DataType.Date)]
         public DateTime OrderPlacedTime { get; set; }
 
         public IEnumerable<CakeOrderInfo> CakeOrderInfo { get; set; }
