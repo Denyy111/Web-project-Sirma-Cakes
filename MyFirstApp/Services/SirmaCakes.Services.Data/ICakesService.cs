@@ -10,6 +10,6 @@
     public interface ICakesService
     {
         // tuk opisvame metodite, kato izpolzwame dannite ot input modela i ot nego pravim cake
-        Task CreateAsync(CreateCakeInputModel input);
+        Task CreateAsync(CreateCakeInputModel input, string userId);
     }
 }

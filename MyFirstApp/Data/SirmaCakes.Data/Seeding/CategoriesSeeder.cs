@@ -20,6 +20,7 @@
 
             await dbContext.Categories.AddAsync(new Category { Name = "Pastry" });
             await dbContext.Categories.AddAsync(new Category { Name = "Cake" });
+            await dbContext.Categories.AddAsync(new Category { Name = "Sweets and Muffins" });
 
             await dbContext.SaveChangesAsync();
         }

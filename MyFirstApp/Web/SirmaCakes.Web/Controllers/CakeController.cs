@@ -32,7 +32,7 @@
         }
 
         [HttpPost]
-        public async Task <IActionResult> Create(CreateCakeInputModel input)
+        public async Task<IActionResult> Create(CreateCakeInputModel input)
         {
             if (!this.ModelState.IsValid)
             {
