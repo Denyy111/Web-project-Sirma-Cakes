@@ -1,0 +1,23 @@
+﻿@using SirmaCakes.Web.ViewModels.ViewModels.Sweets
+@model CakesListViewModel
+@{
+    this.ViewData["Title"] = "All Cakes, page " + Model.PageNumber;
+}
+
+<h1>@this.ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    @foreach (var cake in this.Model.Cakes)
+    {
+        <div class="media col-md-4">
+            <img src="@cake.ImageUrl" width="100" class="mr-3 img-responsive">
+            <div class="media-body">
+                <h5 class="mt-0">@cake.CakeName</h5>
+                @cake.CategoryName
+            </div>
+        </div>
+    }
+</div>
+<hr />
+<partial name="_PagingPartial" model="@Model">
+

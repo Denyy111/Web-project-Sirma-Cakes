@@ -11,5 +11,11 @@
     {
         // tuk opisvame metodite, kato izpolzwame dannite ot input modela i ot nego pravim cake
         Task CreateAsync(CreateCakeInputModel input, string userId);
+
+        // for templeate // CakesInListViewModel
+        IEnumerable<T> GetAll<T>(int page, int itemsPerPage = 12);
+
+        int GetCount();
+
     }
 }

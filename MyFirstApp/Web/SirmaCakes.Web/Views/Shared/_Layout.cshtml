@@ -50,19 +50,20 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <partial name="_LoginPartial" />
                 <ul class="navbar-nav flex-grow-1">
+
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Cake" asp-action="Create">Create Sweets</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Add">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Add">Contact</a>
-                    </li>      
-                    @if ( this.User.Identity.IsAuthenticated)
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Cake" asp-action="All">All Cakes</a>
+                    </li>
+                    @if (this.User.Identity.IsAuthenticated)
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cake" asp-action="All">Create Order</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cake" asp-action="Create">Add Cake</a>
                         </li>
                     }
 
@@ -96,20 +97,21 @@
 <script src="~/css/startbootstrap-clean-blog-gh-pages/js/contact_me.js"></script>
 <script src="~/css/startbootstrap-clean-blog-gh-pages/js/jqBootstrapValidation.js"></script>
 
-
-
 @await this.RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-<!--Weather Forecast-->
-<div class="g-mb-20">
-    <div class="bottom-buffer-md g-brd-primary g-mb-10">
-        <h3 class="h4 g-color-black mb-0">Weather Forecast</h3>
+
+<div class="row">
+    <div class="fa-align-justify align-self-md-center">
+        <!--Weather Forecast-->
+        <div class="g-mb-20">
+            <div class="bottom-buffer-md g-brd-primary g-mb-10">
+                <h3 class="h4 g-color-black mb-0">Weather</h3>
+            </div>
+            <article class="media g-mb-10">
+                <iframe src="https://www.foreca.com/102745912/Utrecht-Netherlands" width="300" height="300" marginwidth="0"
+                        marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" title="Weather Forecast"></iframe>
+            </article>
+        </div>
     </div>
-    <article class="media g-mb-10">
-        <iframe src="https://www.foreca.com/102745912/Utrecht-Netherlands" width="300" height="300" marginwidth="0"
-                marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" title="Weather Forecast"></iframe>
-    </article>
 </div>
-
-

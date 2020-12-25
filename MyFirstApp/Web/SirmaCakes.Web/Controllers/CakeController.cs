@@ -3,9 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using SirmaCakes.Data.Models;
     using SirmaCakes.Services.Data;
     using SirmaCakes.Web.ViewModels.ViewModels.Sweets;
 
@@ -14,15 +18,20 @@
         // Get samata forma
         private readonly ICategoriesService categoriesService;
         private readonly ICakesService cakesService;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public CakeController(
             ICategoriesService categoriesService,
-            ICakesService cakesService)
+            ICakesService cakesService,
+            UserManager<ApplicationUser> userManager)
         {
             this.categoriesService = categoriesService;
             this.cakesService = cakesService;
+            this.userManager = userManager;
         }
 
+        [Authorize]
+        // Add a cake
         public IActionResult Create()
         {
             // nezabravqme da podadem na view-to viewModel-a
@@ -31,7 +40,9 @@
             return this.View(viewModel);
         }
 
+        // Chete formata
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateCakeInputModel input)
         {
             if (!this.ModelState.IsValid)
@@ -42,12 +53,37 @@
                 return this.View(input);
             }
 
+            // information from cookie
+            // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var user = await this.userManager.GetUserAsync(this.User);
+
             // Create cake with ICakesService- method Create pravim celiq HHTp taska i awaitvame
-            // podavame mu direktno input modela
-            await this.cakesService.CreateAsync(input);
+            await this.cakesService.CreateAsync(input, user.Id);
 
             // TODO: Redirect to cake Home Page
             return this.Redirect("/");
+        }
+
+        // All Cakes
+        // Id = number of page
+        // Cake/All/ id=page 1,2,3
+        // id = 1 by default
+        public IActionResult All(int id = 1)
+        {
+            if (id <= 0)
+            {
+                return this.NotFound();
+            }
+
+            const int ItemsPerPage = 12;
+            var viewModel = new CakesListViewModel
+            {
+                ItemsPerPage = ItemsPerPage,
+                PageNumber = id,
+                CakesCount = this.cakesService.GetCount(),
+                Cakes = this.cakesService.GetAll<CakesInListViewModel>(id, ItemsPerPage),  // conkretizirame za koi model
+            };
+            return this.View(viewModel);
         }
     }
 }
