@@ -35,11 +35,8 @@
         }
 
         [Authorize]
-
-        // Add a cake
         public IActionResult Create()
         {
-            // nezabravqme da podadem na view-to viewModel-a
             var viewModel = new CreateCakeInputModel();
             viewModel.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
             return this.View(viewModel);
@@ -62,8 +59,18 @@
             // var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var user = await this.userManager.GetUserAsync(this.User);
 
+            try
+            {
+                await this.cakesService.CreateAsync(input, user.Id, $"{this.environment.WebRootPath}/images");
+            }
+            catch (Exception ex)
+            {
+                this.ModelState.AddModelError(string.Empty, ex.Message);
+                input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
+                return this.View(input);
+            }
+
             // Create cake with ICakesService- method Create pravim celiq HHTp taska i awaitvame
-            await this.cakesService.CreateAsync(input, user.Id, $"{this.environment.ContentRootPath}/images");
 
             // TODO: Redirect to cake Home Page
             return this.Redirect("/");

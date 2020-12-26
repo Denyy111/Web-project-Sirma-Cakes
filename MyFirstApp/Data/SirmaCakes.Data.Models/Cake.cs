@@ -12,7 +12,6 @@
     {
         public Cake()
         {
-
             this.Images = new HashSet<Image>();
         }
 

@@ -49,7 +49,7 @@
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
-        // Allow for long personal notes 
+        // Allow for long personal notes
         [StringLength(500)]
         [Display(Name = "Personal Note")]
         public string Personal_Note { get; set; }

@@ -3,6 +3,7 @@
 
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+
     using SirmaCakes.Data.Common.Models;
 
     public class Category : BaseDeletableModel<int>

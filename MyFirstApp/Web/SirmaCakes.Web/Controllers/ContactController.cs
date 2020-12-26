@@ -19,7 +19,6 @@
             this.contactService = contactService;
         }
 
-       
         public IActionResult Add()
         {
             var viewModel = new AddContactFormInputModel();

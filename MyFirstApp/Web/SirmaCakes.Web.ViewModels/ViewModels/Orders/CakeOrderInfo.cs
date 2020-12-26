@@ -7,9 +7,6 @@
 
     public class CakeOrderInfo
     {
-        // visualisation how to looks ored in acount
-        // Quantity
-
         public int Id { get; set; }
 
         public int Qty { get; set; }

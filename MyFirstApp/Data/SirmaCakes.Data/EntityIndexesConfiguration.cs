@@ -2,9 +2,8 @@
 {
     using System.Linq;
 
-    using SirmaCakes.Data.Common.Models;
-
     using Microsoft.EntityFrameworkCore;
+    using SirmaCakes.Data.Common.Models;
 
     internal static class EntityIndexesConfiguration
     {

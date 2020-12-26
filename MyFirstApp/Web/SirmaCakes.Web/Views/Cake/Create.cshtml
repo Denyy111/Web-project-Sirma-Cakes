@@ -16,7 +16,8 @@
     @*Mnogo redovite poleta ne sa input poleta a sa <textarea rows="4" asp-for="Description" class="form-control"></textarea>, kato description*@
     @*Select pomaga da si napravim dropdown na enum, za da izlizat vyv formata // asp-items - ot kyde da se vzemat obektite na tozi dropdown i mahame input poleto *@
 
-<form method="post" class="col-md-6 offset-md-3">
+<form method="post" class="col-md-6 offset-md-3"
+      enctype="multipart/form-data">
     <h1>@this.ViewData["Title"]</h1>
     <div asp-validation-summary="All" class="text-danger"></div>
     <div class="form-group">

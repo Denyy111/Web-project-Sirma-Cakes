@@ -14,6 +14,7 @@
 
     public class CakesService : ICakesService
     {
+        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly IDeletableEntityRepository<Cake> cakesRepository;
 
         public CakesService(IDeletableEntityRepository<Cake> cakesRepository)
@@ -41,9 +42,15 @@
             };
 
             // /wwwroot/images/cakes/{id}.ext
+            Directory.CreateDirectory($"{imagePath}/cakes/");
             foreach (var image in input.Images)
             {
-                var extension = Path.GetExtension(image.FileName);
+                var extension = Path.GetExtension(image.FileName).TrimStart('.');
+                if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
+                {
+                    throw new Exception($"Invalid image extension {extension}");
+                }
+
                 var dbImage = new Image
                 {
                     AddedByUserId = userId,
@@ -52,6 +59,9 @@
                 cake.Images.Add(dbImage);
 
                 var physicalPath = $"{imagePath}/cakes/{dbImage.Id}.{extension}";
+
+                using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
+                await image.CopyToAsync(fileStream);
             }
 
             // Dobavqme cake// dobavi mi cake v repositorito
@@ -66,12 +76,7 @@
                   .OrderByDescending(x => x.Id)
                   .Skip((page - 1) * itemsPerPage).Take(itemsPerPage)
                   .To<T>().ToList();
-
             return cakes;
-
-            // 1 - 12 items - page 1  (page-1) * itemsPerPage
-            // 13 - 24 - page 2
-            // 25 - 36 - page 3
         }
 
         public int GetCount()

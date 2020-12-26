@@ -8,7 +8,6 @@
 
     public class IndexViewModel
     {
-
         /* opisvame dannite,koito iskame vuv view da gi ima.
          ot nqkyde trqbwa tezi poleta a bydat vzeeti i nai-pravilno e prez input modela
          Ako iskame da izpolzwame godina, broj akauti, koito da se pokazwat na glavnata stranica, datata
