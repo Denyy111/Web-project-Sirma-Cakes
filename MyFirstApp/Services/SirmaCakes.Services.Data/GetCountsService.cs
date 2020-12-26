@@ -36,7 +36,6 @@
                 CakesCount = this.cakeRepository.All().Count(),
                 UsersCount = this.userRepository.All().Count(),
                 ImagesCount = this.imageRepository.All().Count(),
-
             };
 
             return data;

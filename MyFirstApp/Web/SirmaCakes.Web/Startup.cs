@@ -75,7 +75,6 @@
             services.AddTransient<ICategoriesService, CategoriesService>();
             services.AddTransient<ICakesService, CakesService>();
             services.AddTransient<IContactService, ContactService>();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,7 +84,7 @@
         {
             AutoMapperConfig.RegisterMappings(typeof(ErrorViewModel).GetTypeInfo().Assembly);
 
-            // Hire is registrate - Migrations/Middlelwares - tqhnata posledovatelsnost 
+            // Hire is registrate - Migrations/Middlelwares - tqhnata posledovatelsnost
 
             // Seed data on application startup
             using (var serviceScope = app.ApplicationServices.CreateScope())

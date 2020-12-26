@@ -22,7 +22,7 @@
         }
 
         // Pravim metoda da e asynhronen i da vsyshta task
-        public async Task CreateAsync(CreateCakeInputModel input, string userId)
+        public async Task CreateAsync(CreateCakeInputModel input, string userId, string imagePath)
         {
             // CategoriId  e dropdoown -> direktno ni dava Id
 
@@ -51,7 +51,7 @@
                 };
                 cake.Images.Add(dbImage);
 
-                var physicalPath = $"wwwroot/images/cakes/{dbImage.Id}.{extension}";
+                var physicalPath = $"{imagePath}/cakes/{dbImage.Id}.{extension}";
             }
 
             // Dobavqme cake// dobavi mi cake v repositorito

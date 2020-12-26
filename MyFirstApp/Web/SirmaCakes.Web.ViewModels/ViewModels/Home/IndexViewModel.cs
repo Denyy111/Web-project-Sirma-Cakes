@@ -25,6 +25,5 @@
         public int UsersCount { get; set; }
 
         public int ImagesCount { get; set; }
-
     }
 }

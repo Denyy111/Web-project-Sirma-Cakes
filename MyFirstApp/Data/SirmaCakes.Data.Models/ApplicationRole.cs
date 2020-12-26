@@ -3,9 +3,8 @@ namespace SirmaCakes.Data.Models
 {
     using System;
 
-    using SirmaCakes.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using SirmaCakes.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {
