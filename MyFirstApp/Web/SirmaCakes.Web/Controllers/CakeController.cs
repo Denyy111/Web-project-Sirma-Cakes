@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SirmaCakes.Data.Models;
@@ -19,18 +20,22 @@
         private readonly ICategoriesService categoriesService;
         private readonly ICakesService cakesService;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IWebHostEnvironment environment;
 
         public CakeController(
             ICategoriesService categoriesService,
             ICakesService cakesService,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            IWebHostEnvironment environment)
         {
             this.categoriesService = categoriesService;
             this.cakesService = cakesService;
             this.userManager = userManager;
+            this.environment = environment;
         }
 
         [Authorize]
+
         // Add a cake
         public IActionResult Create()
         {
@@ -58,7 +63,7 @@
             var user = await this.userManager.GetUserAsync(this.User);
 
             // Create cake with ICakesService- method Create pravim celiq HHTp taska i awaitvame
-            await this.cakesService.CreateAsync(input, user.Id);
+            await this.cakesService.CreateAsync(input, user.Id, $"{this.environment.ContentRootPath}/images");
 
             // TODO: Redirect to cake Home Page
             return this.Redirect("/");
