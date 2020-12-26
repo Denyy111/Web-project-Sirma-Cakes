@@ -36,7 +36,7 @@
         [StringLength(255)]
         public int Calories { get; set; }
 
-        public string AddbyUserId { get; set; }
+        public string AddedbyUserId { get; set; }
 
         public virtual ApplicationUser AddedByUser { get; set; }
 

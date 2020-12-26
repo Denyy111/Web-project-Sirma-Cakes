@@ -20,7 +20,7 @@
         // will can put link of image too
         public string RemoteimageUrl { get; set; }
 
-        public int AddedByUserId { get; set; }
+        public string AddedByUserId { get; set; }
 
         public ApplicationUser AddedByUser { get; set; }
 

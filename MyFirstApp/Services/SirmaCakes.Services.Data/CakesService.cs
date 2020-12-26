@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
@@ -36,8 +37,22 @@
                 Price = input.Price,
                 ShortDescription = input.ShortDescription,
                 LongDescription = input.LongDescription,
-                AddbyUserId = userId,
+                AddedbyUserId = userId,
             };
+
+            // /wwwroot/images/cakes/{id}.ext
+            foreach (var image in input.Images)
+            {
+                var extension = Path.GetExtension(image.FileName);
+                var dbImage = new Image
+                {
+                    AddedByUserId = userId,
+                    Extension = extension,
+                };
+                cake.Images.Add(dbImage);
+
+                var physicalPath = $"wwwroot/images/cakes/{dbImage.Id}.{extension}";
+            }
 
             // Dobavqme cake// dobavi mi cake v repositorito
             await this.cakesRepository.AddAsync(cake);

@@ -1,5 +1,6 @@
 ﻿namespace SirmaCakes.Web.ViewModels.ViewModels.Sweets
 {
+    using Microsoft.AspNetCore.Http;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -33,6 +34,9 @@
         [Required]
         [Display(Name = "Category")]
         public int CategoryId { get; set; }
+
+        [Range(1, 10)]
+        public IEnumerable<IFormFile> Images { get; set; }
 
         public IEnumerable<KeyValuePair<string, string>> CategoriesItems { get; set; }
     }
