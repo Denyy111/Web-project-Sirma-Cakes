@@ -97,5 +97,11 @@
             };
             return this.View(viewModel);
         }
+
+        public IActionResult ById(int id)
+        {
+            var cake = this.cakesService.GetById<SingleCakeViewModel>(id);
+            return this.View(cake);
+        }
     }
 }

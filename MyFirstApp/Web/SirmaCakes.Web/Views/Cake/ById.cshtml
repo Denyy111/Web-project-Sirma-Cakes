@@ -1,0 +1,28 @@
+﻿@using SirmaCakes.Web.ViewModels.ViewModels.Sweets
+@model SingleCakeViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+<h2>@Model.CakeName</h2>
+<br />
+<div class="row">
+    <div class="col-md-6">
+        <img src="@Model.ImageUrl" alt="@Model.CakeName" />
+        <p></p>
+    </div>
+    <div class="col-md-6">
+        <h4>@Model.CakeName</h4>
+        @* explicit with what values represent *@
+        <p>Price: <i>@Model.Price.ToString("c")</i></p>
+        <p>Calories: <i>@Model.Calories.ToString("D")</i></p>
+        <p>@Model.ShortDescription</p>
+        <p>@Model.LongDescription</p>
+        <form asp-action="AddToShoppingCart"
+              asp-controller="ShoppingCart"              
+              method="post">
+
+            <button class="btn btn-primary buy-now-btn">Add to Cart</button>
+        </form>
+
+    </div>
+</div>

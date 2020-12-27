@@ -80,5 +80,16 @@
         {
             return this.cakesRepository.All().Count();
         }
+
+        public T GetById<T>(int id)
+        {
+            var cake = this.cakesRepository
+                .AllAsNoTracking()
+                .Where(x => x.Id == id)
+                .To<T>()
+                .FirstOrDefault();
+
+            return cake;
+        }
     }
 }
