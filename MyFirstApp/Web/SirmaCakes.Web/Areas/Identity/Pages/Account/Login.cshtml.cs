@@ -19,7 +19,7 @@
     [AllowAnonymous]
     public class LoginModel : PageModel
     {
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
         private readonly ILogger<LoginModel> logger;
 
@@ -28,7 +28,7 @@
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
-            this._userManager = userManager;
+            this.userManager = userManager;
             this.signInManager = signInManager;
             this.logger = logger;
         }

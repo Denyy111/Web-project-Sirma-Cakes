@@ -22,12 +22,10 @@
             this.cakesRepository = cakesRepository;
         }
 
-        // Pravim metoda da e asynhronen i da vsyshta task
         public async Task CreateAsync(CreateCakeInputModel input, string userId, string imagePath)
         {
             // CategoriId  e dropdoown -> direktno ni dava Id
 
-            // Pravim Cake
             var cake = new Cake
             {
                 // Images for now is empry
@@ -59,7 +57,6 @@
                 cake.Images.Add(dbImage);
 
                 var physicalPath = $"{imagePath}/cakes/{dbImage.Id}.{extension}";
-
                 using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
                 await image.CopyToAsync(fileStream);
             }

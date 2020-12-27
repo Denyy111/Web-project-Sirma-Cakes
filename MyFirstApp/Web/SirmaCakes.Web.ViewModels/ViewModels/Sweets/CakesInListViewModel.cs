@@ -24,8 +24,8 @@
             configuration.CreateMap<Cake, CakesInListViewModel>()
                 .ForMember(x => x.ImageUrl, opt =>
                 opt.MapFrom(x =>
-                    x.Images.FirstOrDefault().RemoteimageUrl != null ?
-                    x.Images.FirstOrDefault().RemoteimageUrl :
+                    x.Images.FirstOrDefault().RemoteImageUrl != null ?
+                    x.Images.FirstOrDefault().RemoteImageUrl :
                     "/images/cakes/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension));
         }
     }

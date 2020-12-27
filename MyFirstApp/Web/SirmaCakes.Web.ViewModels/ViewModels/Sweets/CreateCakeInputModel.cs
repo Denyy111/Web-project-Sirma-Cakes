@@ -10,7 +10,7 @@
     public class CreateCakeInputModel
     {
         [Required]
-        [MinLength(3)]
+        [MinLength(4)]
         [Display(Name = "Cake Name")]
         public string CakeName { get; set; }
 

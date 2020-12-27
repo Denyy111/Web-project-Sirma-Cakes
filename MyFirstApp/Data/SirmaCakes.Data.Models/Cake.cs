@@ -15,24 +15,14 @@
             this.Images = new HashSet<Image>();
         }
 
-        [Required]
-        [StringLength(255)]
         public string CakeName { get; set; }
 
-        [Required]
-        [StringLength(50)]
         public string ShortDescription { get; set; }
 
-        [Required]
-        [StringLength(255)]
         public string LongDescription { get; set; }
 
-        [Required]
-        [StringLength(255)]
         public decimal Price { get; set; }
 
-        [Required]
-        [StringLength(255)]
         public int Calories { get; set; }
 
         public string AddedbyUserId { get; set; }

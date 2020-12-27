@@ -17,15 +17,13 @@
 
         public virtual Cake Cake { get; set; }
 
-        // will can put link of image too
-        public string RemoteimageUrl { get; set; }
+        // the contents of the image is in the file system
+        public string Extension { get; set; }
+ 
+        public string RemoteImageUrl { get; set; }
 
         public string AddedByUserId { get; set; }
 
         public ApplicationUser AddedByUser { get; set; }
-
-        public string Extension { get; set; }
-
-        // the contents of the image is in the file system
     }
 }
