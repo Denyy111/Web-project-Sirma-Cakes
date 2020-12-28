@@ -1,10 +1,6 @@
 ﻿namespace SirmaCakes.Web.ViewModels.ViewModels.Home
 {
-    using System;
     using System.Collections.Generic;
-    using System.Text;
-
-    using SirmaCakes.Data.Models;
 
     public class IndexViewModel
     {
@@ -15,6 +11,9 @@
         // sled kato izpolzwame propyrtitata ot viewmodela i sme gi podali vyv view-to vyv view-ot otivame v controlera
         v action i tam podaveme informaciqta ot actiona vav view-to.
         */
+
+        public IEnumerable<IndexPageRandomCakeViewModel> RandomCake { get; set; }
+
         public int Year { get; set; }
 
         public int CakesCount { get; set; }

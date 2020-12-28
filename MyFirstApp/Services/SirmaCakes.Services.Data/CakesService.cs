@@ -10,6 +10,7 @@
     using SirmaCakes.Data.Common.Repositories;
     using SirmaCakes.Data.Models;
     using SirmaCakes.Services.Mapping;
+    using SirmaCakes.Web.ViewModels.ViewModels.CartItems;
     using SirmaCakes.Web.ViewModels.ViewModels.Sweets;
 
     public class CakesService : ICakesService
@@ -91,5 +92,45 @@
 
             return cake;
         }
+
+        public IEnumerable<T> GetRandom<T>(int count)
+        {
+            // Sorted by random criteria
+           return this.cakesRepository.All()
+                .OrderBy(x => Guid.NewGuid())
+                .Take(count)
+                .To<T>().ToList();
+        }
+
+        //public Task<int> AddToCartAsync(Cake cake, int qty = 1)
+        //{
+
+        //}
+
+        //public Task ClearCartAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<IEnumerable<CartItemsViewModel>> GetShoppingCartItemsAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<int> RemoveFromCartAsync(Cake cake)
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //public Task<(int ItemCount, decimal TotalAmmount)> GetCartCountAndTotalAmmountAsync()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        //private async Task<int> AddOrRemoveCart(Cake cake, int qty)
+        //{
+
+
+        //}
     }
 }

@@ -18,12 +18,16 @@
     public class HomeController : BaseController
     {
         private readonly IGetCountsService countsService;
+        private readonly ICakesService cakesService;
 
         // 1.Without AutoMapper
         // 2.Can use AutoMapper
-        public HomeController(IGetCountsService countsService)
+        public HomeController(
+            IGetCountsService countsService,
+            ICakesService cakesService)
         {
             this.countsService = countsService;
+            this.cakesService = cakesService;
         }
 
         public IActionResult Index()
@@ -38,6 +42,7 @@
                 ImagesCount = counts.ImagesCount,
                 UsersCount = counts.UsersCount,
                 CakesCount = counts.CakesCount,
+                RandomCake = this.cakesService.GetRandom<IndexPageRandomCakeViewModel>(3),
             };
 
             return this.View(viewModel);

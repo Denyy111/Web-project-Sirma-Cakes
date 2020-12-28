@@ -49,8 +49,7 @@
         {
             if (!this.ModelState.IsValid)
             {
-                // nezabravqme da podadem na view-to
-                // Vkarvame v input modela categoriite koito s v seeder-a
+
                 input.CategoriesItems = this.categoriesService.GetAllAsKeyValuePairs();
                 return this.View(input);
             }

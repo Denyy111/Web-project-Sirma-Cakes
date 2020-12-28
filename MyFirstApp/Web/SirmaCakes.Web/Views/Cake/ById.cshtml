@@ -13,12 +13,12 @@
     <div class="col-md-6">
         <h4>@Model.CakeName</h4>
         @* explicit with what values represent *@
-        <p>Price: <i>@Model.Price.ToString("c")</i></p>
-        <p>Calories: <i>@Model.Calories.ToString("D")</i></p>
+        <p>Price: <i>€@Model.Price.ToString("c")</i></p>
+        <p>Calories: <i>@Model.Calories</i></p>
         <p>@Model.ShortDescription</p>
         <p>@Model.LongDescription</p>
         <form asp-action="AddToShoppingCart"
-              asp-controller="ShoppingCart"              
+              asp-controller="ShoppingCart"
               method="post">
 
             <button class="btn btn-primary buy-now-btn">Add to Cart</button>

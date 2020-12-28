@@ -4,7 +4,8 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Threading.Tasks;
-
+    using SirmaCakes.Data.Models;
+    using SirmaCakes.Web.ViewModels.ViewModels.CartItems;
     using SirmaCakes.Web.ViewModels.ViewModels.Sweets;
 
     public interface ICakesService
@@ -18,5 +19,17 @@
         int GetCount();
 
         T GetById<T>(int id); // dannite za cake v cassa koit go iskame 
+
+        IEnumerable<T> GetRandom<T>(int count);
+
+        //Task<int> AddToCartAsync(Cake cake, int qty = 1);
+
+        //Task ClearCartAsync();
+
+        //Task<IEnumerable<CartItemsViewModel>> GetShoppingCartItemsAsync();
+
+        //Task<int> RemoveFromCartAsync(Cake cake);
+
+        //Task<(int ItemCount, decimal TotalAmmount)> GetCartCountAndTotalAmmountAsync();
     }
 }
