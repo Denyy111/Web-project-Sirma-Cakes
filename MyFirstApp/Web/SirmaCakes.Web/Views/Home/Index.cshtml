@@ -4,31 +4,31 @@
     this.ViewData["Title"] = "Sirma's Sweets";
 }
 <div class="text-center row">
-    <div class="jumbotron col-md-12">
-        <div class="heading-container bottom-buffer-md">
-            <h1 class="display-4"> @GlobalConstants.SystemName!</h1>
-            <div>
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <h1 class=display-4> Welcome, @User.Identity.Name</h1>
-                }
-                <p class="lead" style="font-size: 24px; font-style: italic; ">
-                    Welcome to the world of Sirma's sweet temptations!
-                    The place where your most delicious fantasy will become the feast of the senses.
-                    "In my quest to be different and unique, I put passion and emotion into the fulfillment of every desire."
-                    If you want to touch the magic, write your wishes for the perfect cake and believe in miracles!
-                </p>
-                <div class="col-md-4 offset-md-3" style="font-size: 24px; font-style: italic; ">
-                    <ul class="list-group">
-                        @*<li> means: list of items*@
-                        <li class="list-group-item bg-light">Categories: @Model.CategoriesCount</li>
-                        <li class="list-group-item bg-warning">Images: @Model.ImagesCount</li>
-                        <li class="list-group-item bg-light">Cakes: @Model.CakesCount</li>
-                        <li class="list-group-item bg-warning">Users: @Model.UsersCount</li>
-                    </ul>
-                </div>
+
+    <div class="heading-container bottom-buffer-md">
+        <h1 class="display-4"> @GlobalConstants.SystemName!</h1>
+        <div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h1 class=display-4> Welcome, @User.Identity.Name</h1>
+            }
+            <p class="lead" style="font-size: 24px; font-style: italic; ">
+                Welcome to the world of Sirma's sweet temptations!
+                The place where your most delicious fantasy will become the feast of the senses.
+                "In my quest to be different and unique, I put passion and emotion into the fulfillment of every desire."
+                If you want to touch the magic, write your wishes for the perfect cake and believe in miracles!
+            </p>
+            <div class="col-md-4 offset-md-3" style="font-size: 24px; font-style: italic; ">
+                <ul class="list-group">
+                    @*<li> means: list of items*@
+                    <li class="list-group-item blog-details">Categories: @Model.CategoriesCount</li>
+                    <li class="list-group-item bg-secondary">Images: @Model.ImagesCount</li>
+                    <li class="list-group-item blog-details">Cakes: @Model.CakesCount</li>
+                    <li class="list-group-item bg-secondary">Users: @Model.UsersCount</li>
+                </ul>
             </div>
         </div>
+        <hr />
     </div>
 </div>
 <div class="col-md-10">
@@ -72,11 +72,28 @@
     </div>
     <div style="height: 20px"></div>
 </div>
+<hr />
+<div class="col-md-10">
+    <div class="row">
+        <div class="fa-align-justify align-self-md-center">
+            <!--Weather Forecast-->
+            <div class="g-mb-20">
+                <div class="bottom-buffer-md g-brd-primary g-mb-10">
+                    <h3 class="h4 g-color-black mb-0">Weather forecast</h3>
+                </div>
+                <article class="media g-mb-10">
+                    <iframe src="https://www.foreca.com/102745912/Utrecht-Netherlands" width="300" height="300" marginwidth="0"
+                            marginheight="0" frameborder="0" scrolling="no" allowtransparency="true" title="Weather Forecast"></iframe>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
 
 @section Color {
     <style>
         body {
-            background-color: papayawhip
+            background-color: antiquewhite
         }
     </style>
 }
